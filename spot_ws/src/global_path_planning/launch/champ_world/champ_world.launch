@@ -7,13 +7,12 @@
 
     <group ns="$(arg robot_name)">
         <!-- Map server -->
-        <arg name="map_file" default="$(find champ_config)/maps/map.yaml"/>
+        <arg name="map_file" default="$(find spot_config)/maps/map.yaml"/>
         <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" >
             <param name="frame_id" value="$(arg frame_prefix)map" />
         </node>
-
         <!-- AMCL used for localization -->
-        <include file="$(find champ_navigation)/launch/navigation/amcl.launch">
+        <include file="$(find spot_config)/launch/include/amcl.launch">
             <arg name="frame_prefix" value="$(arg frame_prefix)"/>
         </include>
         
@@ -24,7 +23,7 @@
         </include>
 
         <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz"
-            args="-d $(find global_path_planning)/rviz/turtlebot3_ros_world.rviz -f $(arg frame_prefix)map"
+            args="-d $(find global_path_planning)/rviz/navigate.rviz -f $(arg frame_prefix)map"
             output="screen"/>
     </group>
 </launch>
