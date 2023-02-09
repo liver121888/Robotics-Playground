@@ -45,9 +45,10 @@ roslaunch spot_config gazebo.launch
         ...
     </include>    
 ```
-to robots/spot_config/launch/gazebo.launch)
-
-
+to robots/configs/spot_config/launch/gazebo.launch), then launch the following:
+```bash
+roslaunch spot_config gazebo.launch world_init_z:=0.8
+```
 
 5. Keep the previous terminal running, and open a new terminal. Source the files, as given in 2. Then, start the Path Planning Node for Spot, and keep the terminal running. The RViz visualization window showing the robot in the same environment would show up.
 
